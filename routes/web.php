@@ -7,7 +7,14 @@ use App\Http\Controllers\CarController;
 
 
 
-Route::get('/autos' ,[CarController::class, 'index']);
+
+
+//middlewares ***************************************************************************
+
+Route::middleware(['admin'] )->group(function () {
+    Route::get('/autos' ,[CarController::class, 'index']);
+});
+
 
 Route::get('/', function () {
     return view('welcome');
