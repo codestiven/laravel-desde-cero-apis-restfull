@@ -11,10 +11,17 @@ use App\Http\Controllers\CarController;
 
 //middlewares ***************************************************************************
 
-Route::middleware(['admin'] )->group(function () {
+Route::middleware(['admin'])->group(function(){
+
     Route::get('/autos' ,[CarController::class, 'index']);
+
 });
 
+Route::middleware(['auth'])->group(function(){
+
+    Route::get('/libros' ,[CarController::class, 'index']);
+
+});
 
 Route::get('/', function () {
     return view('welcome');
