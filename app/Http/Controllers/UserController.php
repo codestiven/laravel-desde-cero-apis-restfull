@@ -15,4 +15,15 @@ class UserController extends Controller
             return view('user.index' , ['users'=> $user]);
 
    }
+
+     public function registro(Request $request){
+
+       $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+        ]);
+
+
+   }
 }

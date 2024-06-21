@@ -27,9 +27,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/registro', function () {
+//     return view('auth.register');
+// });
+
 Route::get('/saludo', function () {
     return view('nuevavista');
 });
+
+
 
 
 Route::get('/saludo/{name}', function ($name) {
@@ -40,7 +46,14 @@ Route::get('/saludo/{name}', function ($name) {
 
 
 // llamando controladores ***********************************************************
+Route::get('/register', function() {
+    return view('auth.register');
+})->name('register.form');
 
+// Ruta para manejar el envío del formulario de registro
+Route::post('/register', [UserController::class, 'registro'])->name('register');
+
+// Route::post('/register', [UserController::class, 'registro']);
 
 Route::get('/usuarios' ,[UserController::class, 'index2']);
 
